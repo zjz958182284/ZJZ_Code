@@ -1,4 +1,2 @@
-/ConsoleApp1/obj
-/WindowsFormsApp1/bin
-/WindowsFormsApp1/obj
-/ConsoleApp1/bin
+obj/
+bin/
