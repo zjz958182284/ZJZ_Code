@@ -91,6 +91,7 @@ namespace WindowsFormsApp1
             "*",
             "/",
             "%"});
+            this.comboBox1.SelectedIndex = comboBox1.Items.IndexOf("*");
             this.comboBox1.Location = new System.Drawing.Point(290, 289);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 26);
@@ -200,8 +201,8 @@ namespace WindowsFormsApp1
                     case "-": this.label2.Text = (op1 - op2).ToString(); break;
                     case "*": this.label2.Text = (op1 * op2).ToString(); break;
                     case "/":
-                        if ((int)op2 == 0) {
-                            MessageBox.Show("被除数为零请在第二个操作数输入一个非零值！！！\n" );
+                        if (op2 == 0) {
+                            MessageBox.Show("请在第二个操作数输入一个非零值！！！\n" );
                           
                         }
                          
@@ -209,7 +210,14 @@ namespace WindowsFormsApp1
 
                        break; 
 
-                    case "%": this.label2.Text = (op1 % op2).ToString(); break;
+                    case "%":
+                    if (op2 == 0)
+                    {
+                        MessageBox.Show("请在第二个操作数输入一个非零值！！！\n");
+
+                    }
+                    else this.label2.Text = (op1 % op2).ToString();
+                    break;
                 }
             }
         
