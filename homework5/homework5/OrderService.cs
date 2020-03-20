@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace homework5
 {
-    //删除或者修改失败是引发的异常类型
+    //删除或者修改失败时引发的异常类型
     class DeleOrModiException : ApplicationException
     {
         public DeleOrModiException(string message) : base(message) { }
@@ -31,10 +31,13 @@ namespace homework5
         }
 
         //按照收件人ID查询收件人订单
-        public List<Order> SearchOrderById(string id)
+        public Order SearchOrderById(string id)
         {
             var query = this.orders.Where(order => order.Receiver.ReceiverID == id);
-            return  query.ToList();//是否返回空？
+            List<Order> list = query.ToList();
+            if (list.Count == 0)
+                return null;
+            return  list[0];//是否返回空？
         }
 
         //按照收件人姓名查询收件人订单
@@ -42,8 +45,9 @@ namespace homework5
         {
             var query = this.orders.Where(order => order.Receiver.ReceiverName == name)
                 .OrderBy(order=>order.SumPrice());//查询结果按照订单总价排序
-            if (query == null) Console.WriteLine("不存在此人的订单！");
-            return query.ToList();
+            List<Order> list = query.ToList();
+            if (list.Count==0) Console.WriteLine("不存在此人的订单！");
+            return list;
         }
 
         //删除订单
@@ -107,17 +111,23 @@ namespace homework5
         }
 
         //按照订单号进行查询
-        public List<OrderItem> SearchOrderItemById(List<OrderItem> items ,string id)
+        public OrderItem SearchOrderItemById(List<OrderItem> items ,string id)
         {
             var query = items.Where(item => item.OrderID == id);
-            return query.ToList();
+            List<OrderItem> list = query.ToList();
+            if (list.Count == 0)
+                return null;
+            return list[0];
         }
 
         //按照商品名称进行查询
         public List<OrderItem> SearchOrderItemByProductName(List<OrderItem> items, string name)
         {
             var query = items.Where(item => item.Product.ProductName == name);
-            return query.ToList();
+            List<OrderItem> list = query.ToList();
+            if (list.Count == 0)
+                return null;
+            return list;
         }
 
         //修改购物数量
@@ -125,12 +135,12 @@ namespace homework5
         {
             try
             {
-                List<Order> order = SearchOrderById(userID);
+                Order order = SearchOrderById(userID);
                 if (order == null)
                     throw new DeleOrModiException("无法找到该收件人！");
                 else
             {
-                    foreach (OrderItem i in order[0])
+                    foreach (OrderItem i in order)
                         if (i.Product.ProductName == name)
                         {
                             i.BuyNum = newNum;
@@ -153,15 +163,15 @@ namespace homework5
         {
             try
             {
-                List<Order> order = SearchOrderById(userID);
-                if (order == null)
+                Order order = SearchOrderById(userID);
+                if (order==null)
                     throw new DeleOrModiException("无法找到该收件人！");
                 else
                 {
-                    for(int i=0;i<order[0].OrderItems.Count;++i)
-                        if (order[0].OrderItems[i].Product.ProductName == productName)
+                    for(int i=0;i<order.OrderItems.Count;++i)
+                        if (order.OrderItems[i].Product.ProductName == productName)
                         {
-                            order[0].OrderItems.RemoveAt(i);
+                            order.OrderItems.RemoveAt(i);
                             return true;
                         }
                     throw new DeleOrModiException($"收件人{userID}没有购买{productName}无法删除");

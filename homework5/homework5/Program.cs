@@ -66,6 +66,12 @@ namespace homework5
             List<Order> orders = orderService.SearchOrderByName("Amy");
             foreach (Order o in orders)
                 Console.WriteLine(o.ToString());
+
+            //修改购物数量
+            Order order = orderService.SearchOrderById("456");
+            Console.WriteLine(order.OrderItems[1].ToString());
+            orderService.ModiBuyNum("456", "香蕉", 150);
+            Console.WriteLine(order.OrderItems[1].ToString());
         }
     }
 }
