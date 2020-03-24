@@ -3,7 +3,7 @@ using System.Threading;
 using System.Collections.Generic;
 namespace homework5
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -43,17 +43,17 @@ namespace homework5
             ////模拟收件人3
             Order order3 = new Order(new Receiver("789", "Amy", "红安街街8号", "199456949"));
             order3.AddOrderItem(new OrderItem("zgc",new Product("苹果", 0.5), 5));
-            Console.WriteLine(order3.OrderItems[0].ToString());
+          
 
             order3.AddOrderItem(new OrderItem("zlc", new Product("香蕉", 2.3), 8));
-            Console.WriteLine(order3.OrderItems[1].ToString());
+       
 
             order3.AddOrderItem(new OrderItem("zfc", new Product("梨子", 1.2), 6));
-            Console.WriteLine(order1.OrderItems[2].ToString());
+       
 
             orderService.AddOrder(order3);
            
-            Console.WriteLine(order3.ToString());
+         
 
             orderService.OrderSort();
             Console.WriteLine("查询买了香蕉的所有订单项:");

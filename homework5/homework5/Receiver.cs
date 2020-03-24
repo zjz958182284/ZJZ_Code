@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace homework5
 {
-    class Receiver
+  [Serializable]
+   public class Receiver
     {
         private string receiverID;
         private string receiverName;
         private string receiverAddress;
         private string receiverPhone;
-
+        public Receiver() { }
         public string ReceiverID
         {
             get => receiverID;

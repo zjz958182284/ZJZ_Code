@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace homework5
 {
-    class Order:IComparable<Order>
+    [Serializable]
+      public class Order:IComparable<Order>
     {
 
         private Receiver receiver;
@@ -21,9 +22,15 @@ namespace homework5
                 else
                     return null;
             }
+          
         }
         public List<OrderItem> OrderItems { get => orderItems; }
-        public Receiver Receiver { get => receiver; }
+        public Receiver Receiver {
+            get => receiver;
+            set => receiver = value;
+        }
+
+        public Order() { receiver = null; }
         public Order(Receiver receiver)  
         {
             this.receiver = receiver;

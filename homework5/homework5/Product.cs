@@ -6,22 +6,24 @@ using System.Threading.Tasks;
 
 namespace homework5
 {
-    class Product
+   [Serializable]
+   public class Product
     {
         //private string productId;
         //private string productType;
         private string productName;
         private double productPrice;
- //       public string ProductId
- //   {
- //       get => productId;
- //       set => productId = value;
- //   }
- //   public string ProductType
- //   {
- //       get => productType;
- //       set => productType = value;
- //   }
+        //       public string ProductId
+        //   {
+        //       get => productId;
+        //       set => productId = value;
+        //   }
+        //   public string ProductType
+        //   {
+        //       get => productType;
+        //       set => productType = value;
+        //   }
+        public Product() { }
         public string ProductName
         {
             get => productName;

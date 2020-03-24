@@ -6,27 +6,36 @@ using System.Threading.Tasks;
 
 namespace homework5
 {
-    class OrderItem
+   [Serializable]
+    public class OrderItem
     {
         private string orderID;
         private Product product;
         private DateTime orderTime;
         private int buyNum;
-        public string OrderID { get => orderID; }
-        public int BuyNum { get => buyNum; set => buyNum = value; }
+        public string OrderID {
+            get =>orderID;
+            set =>orderID=value;
+        }
+        public int BuyNum {
+            get => buyNum;
+            set => buyNum = value;
+        }
+        public OrderItem() { }
+        public DateTime OrderTime { get => orderTime; set => orderTime = value; }
         public OrderItem ( string orderid ,Product product,int buyNum)
         {
-            Random random = new Random();
+           
             this.orderID = orderid;
             this.product = product;
             this.buyNum = buyNum;
             orderTime = DateTime.Now;
         }
-        public Product Product { get => product; }
+        public Product Product { get => product; set => product = value; }
         public override string ToString()
         {
             
-            string content = orderID + "    " + product.ProductName + "     "+
+            string content = orderID + "            " + product.ProductName + "     "+
                 //+ product.ProductId + "     " + product.ProductType + "     " 
                + product.ProductPrice + "           " + buyNum + "              " + SumPrice() 
                 + "     " +orderTime.ToLocalTime().ToString()+ "\n";

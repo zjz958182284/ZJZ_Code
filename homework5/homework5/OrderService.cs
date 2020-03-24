@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace homework5
 {
@@ -12,7 +15,7 @@ namespace homework5
         public DeleOrModiException(string message) : base(message) { }
     }
 
-    class OrderService
+    public class OrderService
     {
         private List<Order> orders = new List<Order>();
         public List<Order> Orders { get => orders; }
@@ -20,14 +23,17 @@ namespace homework5
         //添加订单
         public void AddOrder(Order order)
         {
-            foreach (Order o in orders)
-                if (order.Equals(o))
-                {
-                    Console.WriteLine("添加订单重复！");
-                    return;
-                }
-                 
-              orders.Add(order);
+            if (order != null)
+            {
+                foreach (Order o in orders)
+                    if (order.Equals(o))
+                    {
+                        Console.WriteLine("添加订单重复！");
+                        return;
+                    }
+
+                orders.Add(order);
+            }
         }
 
         //按照收件人ID查询收件人订单
@@ -37,7 +43,7 @@ namespace homework5
             List<Order> list = query.ToList();
             if (list.Count == 0)
                 return null;
-            return  list[0];//是否返回空？
+            return  list[0];
         }
 
         //按照收件人姓名查询收件人订单
@@ -111,8 +117,9 @@ namespace homework5
         }
 
         //按照订单号进行查询
-        public OrderItem SearchOrderItemById(List<OrderItem> items ,string id)
+        public OrderItem SearchOrderItemById(string id)
         {
+            List<OrderItem> items = GetOrderItems(this.orders);
             var query = items.Where(item => item.OrderID == id);
             List<OrderItem> list = query.ToList();
             if (list.Count == 0)
@@ -128,6 +135,21 @@ namespace homework5
             if (list.Count == 0)
                 return null;
             return list;
+        }
+
+        //按照收件人ID和商品名称查询
+        public OrderItem SearchOrderItemByProductName(string userID, string name)
+        {
+            Order order = SearchOrderById(userID);
+            if (order != null)
+            {
+                List<OrderItem> items = SearchOrderItemByProductName(order.OrderItems,
+                    name);
+                if (items != null)
+                    return items[0];
+            }
+            return null;
+
         }
 
         //修改购物数量
@@ -158,7 +180,7 @@ namespace homework5
 
 
 
-        //删除订单
+        //删除订单项
         public bool RemoveItem(string userID,string productName)
         {
             try
@@ -204,7 +226,47 @@ namespace homework5
             
         }
 
+        //将所有订单序列化为xml文件;
+        public void Export()
+        {
+            XmlSerializer xmlSerializer=new XmlSerializer(typeof(List<Order>));
+            using (FileStream fs = new FileStream("D:\\VS_workplace\\homework5\\homework5\\orders.xml", FileMode.Create))
+            {
+                xmlSerializer.Serialize(fs, this.orders);
+            }
 
+        }
+        //从xml文件中导入订单
+        public List<Order> Import(string path)
+        {
+            XmlSerializer xml = new XmlSerializer(typeof(List<Order>));
+            using (FileStream fs = new FileStream(path, FileMode.Open))
+            {
+                List<Order> orders =(List <Order>)xml.Deserialize(fs);
+                return orders;
+            }
+           
+        }
+        
+        //将订单序列化为二进制订单
+        public void ExportToBin()
+        {
+            BinaryFormatter b = new BinaryFormatter();
+            using (FileStream file = new FileStream("D:\\VS_workplace\\homework5\\homework5\\Bin.temp", FileMode.Create))
+            {
+                b.Serialize(file, this.orders);
+            }
+        }
+
+        //订单二进制反序列化
+        public List<Order> ImportFromBin(string path)
+        {
+            BinaryFormatter b = new BinaryFormatter();
+            using (FileStream file = new FileStream(path, FileMode.Open))
+            {
+                return (List<Order>)b.Deserialize(file);
+            }
+        }
 
     }
 }
