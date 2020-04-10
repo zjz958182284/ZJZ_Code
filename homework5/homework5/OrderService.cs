@@ -18,7 +18,7 @@ namespace homework5
     public class OrderService
     {
         private List<Order> orders = new List<Order>();
-        public List<Order> Orders { get => orders; }
+        public List<Order> Orders { get => orders;set=> orders=value; }
 
         //添加订单
         public void AddOrder(Order order)
@@ -26,19 +26,21 @@ namespace homework5
             if (order != null)
             {
                 foreach (Order o in orders)
-                    if (order.Equals(o))
+                    if (o.Equals(order))
                     {
                         Console.WriteLine("添加订单重复！");
                         return;
                     }
 
                 orders.Add(order);
+
             }
         }
 
         //按照收件人ID查询收件人订单
         public Order SearchOrderById(string id)
         {
+            if (this.orders.Count == 0) return null;
             var query = this.orders.Where(order => order.Receiver.ReceiverID == id);
             List<Order> list = query.ToList();
             if (list.Count == 0)
@@ -50,7 +52,7 @@ namespace homework5
         public List<Order> SearchOrderByName(string name)
         {
             var query = this.orders.Where(order => order.Receiver.ReceiverName == name)
-                .OrderBy(order=>order.SumPrice());//查询结果按照订单总价排序
+                .OrderBy(order=>order.OrderSumPrice);//查询结果按照订单总价排序
             List<Order> list = query.ToList();
             if (list.Count==0) Console.WriteLine("不存在此人的订单！");
             return list;
@@ -74,7 +76,7 @@ namespace homework5
 
         }
 
-        //修改用户名
+        //修改用户地址
         public bool ModifyOrderAdr(string id,string newA)
         {
             try
@@ -227,10 +229,10 @@ namespace homework5
         }
 
         //将所有订单序列化为xml文件;
-        public void Export()
+        public void Export(string path)
         {
             XmlSerializer xmlSerializer=new XmlSerializer(typeof(List<Order>));
-            using (FileStream fs = new FileStream("D:\\VS_workplace\\homework5\\homework5\\orders.xml", FileMode.Create))
+            using (FileStream fs = new FileStream(path, FileMode.Create))
             {
                 xmlSerializer.Serialize(fs, this.orders);
             }
@@ -249,10 +251,10 @@ namespace homework5
         }
         
         //将订单序列化为二进制订单
-        public void ExportToBin()
+        public void ExportToBin(string path)
         {
             BinaryFormatter b = new BinaryFormatter();
-            using (FileStream file = new FileStream("D:\\VS_workplace\\homework5\\homework5\\Bin.temp", FileMode.Create))
+            using (FileStream file = new FileStream(path, FileMode.Create))
             {
                 b.Serialize(file, this.orders);
             }

@@ -43,7 +43,7 @@ namespace homework5.Tests
         [TestMethod()]
         public void ExportTest()
         {
-            orderService.Export();
+            orderService.Export("D:\\VS_workplace\\homework5\\homework5\\orders.xml");
         }
 
         [TestMethod()]
@@ -59,7 +59,8 @@ namespace homework5.Tests
         [TestMethod()]
         public void ExportToBinTest()
         {
-            orderService.ExportToBin();
+            orderService.ExportToBin("D:\\VS_workplace\\homewor" +
+                  "k5\\homework5\\Bin.temp");
         }
 
         [TestMethod()]

@@ -12,7 +12,9 @@ namespace homework5
     {
 
         private Receiver receiver;
+        private double sumPrice;
         private List<OrderItem> orderItems = new List<OrderItem>();
+        public double OrderSumPrice { get => sumPrice; set => sumPrice = value; }
         public OrderItem this[int index]
         {
             get
@@ -30,48 +32,47 @@ namespace homework5
             set => receiver = value;
         }
 
-        public Order() { receiver = null; }
+        public Order() {
+            receiver = new Receiver();
+            orderItems = new List<OrderItem>();           
+        }
         public Order(Receiver receiver)  
         {
             this.receiver = receiver;
+ 
         }
-        public void AddOrderItem(OrderItem orderItem)
+        public bool AddOrderItem(OrderItem orderItem)
         {
             foreach (OrderItem o in orderItems)
-                if (orderItem.Equals(o))
+                if (o.Equals(orderItem))
                 {
                     Console.WriteLine("添加重复订单项请重新添加！");
-                    return;
-                }
-                    
+                    return false;
+                }    
             orderItems.Add(orderItem);
-            
+            sumPrice += orderItem.Product.ProductPrice * orderItem.BuyNum;
+            return true;
         }
         public override bool Equals(object order1)
         {
+            if (order1 == null) return false;
             if (order1 is Order)
             {
                 Order order = (Order)order1;
-                return this.receiver.ReceiverID == order.receiver.ReceiverID;
+                return this.receiver.ReceiverID == order.Receiver.ReceiverID;
             }
             else
                 return false;
  
         }
 
-        public double SumPrice()
-        {
-            double sum = 0;
-            foreach (OrderItem o in orderItems)
-                sum += o.SumPrice();
-            return sum;
-        }
+        
 
         public override string ToString()
         {
             string titleBar1= "收件人ID    "+"收件人      " + "收件人地址    " + "收件人电话   "+"订单总价\n";
             string content1 =receiver.ReceiverID+ "         " +receiver.ReceiverName + "       " +
-                receiver.ReceiverAddress + "      "+ receiver.ReceiverPhone + "      " + SumPrice()+"\n\n";
+                receiver.ReceiverAddress + "      "+ receiver.ReceiverPhone + "      " + sumPrice+"\n\n";
 
             string titleBar2 = "订单明细为:\n" + "订单编号   " + "商品名称   " +
                // "商品ID     " + "商品类型     " + 

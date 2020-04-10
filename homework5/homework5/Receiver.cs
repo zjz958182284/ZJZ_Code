@@ -46,7 +46,8 @@ namespace homework5
         }
 		 public override string ToString()
         {
-            return receiverName + " " + receiverAddress + " " + receiverPhone;
+            return "ID:"+receiverID+" "+receiverName + " " +
+                receiverAddress + " " + receiverPhone;
         }
 
     }

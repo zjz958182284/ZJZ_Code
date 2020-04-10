@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
 <ArrayOfOrder xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Order>
+    <OrderSumPrice>28.099999999999998</OrderSumPrice>
     <OrderItems>
       <OrderItem>
         <OrderID>asd</OrderID>
         <BuyNum>5</BuyNum>
-        <OrderTime>2020-03-30T08:28:25.2516709+08:00</OrderTime>
+        <OrderTime>2020-04-10T23:03:35.8816576+08:00</OrderTime>
         <Product>
           <ProductName>苹果</ProductName>
           <ProductPrice>0.5</ProductPrice>
@@ -14,7 +15,7 @@
       <OrderItem>
         <OrderID>ard</OrderID>
         <BuyNum>8</BuyNum>
-        <OrderTime>2020-03-30T08:28:25.2516709+08:00</OrderTime>
+        <OrderTime>2020-04-10T23:03:35.8816576+08:00</OrderTime>
         <Product>
           <ProductName>香蕉</ProductName>
           <ProductPrice>2.3</ProductPrice>
@@ -23,7 +24,7 @@
       <OrderItem>
         <OrderID>aso</OrderID>
         <BuyNum>6</BuyNum>
-        <OrderTime>2020-03-30T08:28:25.2516709+08:00</OrderTime>
+        <OrderTime>2020-04-10T23:03:35.8816576+08:00</OrderTime>
         <Product>
           <ProductName>梨子</ProductName>
           <ProductPrice>1.2</ProductPrice>
@@ -38,11 +39,12 @@
     </Receiver>
   </Order>
   <Order>
+    <OrderSumPrice>28.099999999999998</OrderSumPrice>
     <OrderItems>
       <OrderItem>
         <OrderID>qge</OrderID>
         <BuyNum>5</BuyNum>
-        <OrderTime>2020-03-30T08:28:25.2516709+08:00</OrderTime>
+        <OrderTime>2020-04-10T23:03:35.8816576+08:00</OrderTime>
         <Product>
           <ProductName>苹果</ProductName>
           <ProductPrice>0.5</ProductPrice>
@@ -51,7 +53,7 @@
       <OrderItem>
         <OrderID>qoe</OrderID>
         <BuyNum>8</BuyNum>
-        <OrderTime>2020-03-30T08:28:25.2516709+08:00</OrderTime>
+        <OrderTime>2020-04-10T23:03:35.8816576+08:00</OrderTime>
         <Product>
           <ProductName>香蕉</ProductName>
           <ProductPrice>2.3</ProductPrice>
@@ -60,7 +62,7 @@
       <OrderItem>
         <OrderID>qye</OrderID>
         <BuyNum>6</BuyNum>
-        <OrderTime>2020-03-30T08:28:25.2516709+08:00</OrderTime>
+        <OrderTime>2020-04-10T23:03:35.8816576+08:00</OrderTime>
         <Product>
           <ProductName>梨子</ProductName>
           <ProductPrice>1.2</ProductPrice>
@@ -75,11 +77,12 @@
     </Receiver>
   </Order>
   <Order>
+    <OrderSumPrice>28.099999999999998</OrderSumPrice>
     <OrderItems>
       <OrderItem>
         <OrderID>zgc</OrderID>
         <BuyNum>5</BuyNum>
-        <OrderTime>2020-03-30T08:28:25.2516709+08:00</OrderTime>
+        <OrderTime>2020-04-10T23:03:35.8826173+08:00</OrderTime>
         <Product>
           <ProductName>苹果</ProductName>
           <ProductPrice>0.5</ProductPrice>
@@ -88,7 +91,7 @@
       <OrderItem>
         <OrderID>zlc</OrderID>
         <BuyNum>8</BuyNum>
-        <OrderTime>2020-03-30T08:28:25.2516709+08:00</OrderTime>
+        <OrderTime>2020-04-10T23:03:35.8826173+08:00</OrderTime>
         <Product>
           <ProductName>香蕉</ProductName>
           <ProductPrice>2.3</ProductPrice>
@@ -97,7 +100,7 @@
       <OrderItem>
         <OrderID>zfc</OrderID>
         <BuyNum>6</BuyNum>
-        <OrderTime>2020-03-30T08:28:25.2516709+08:00</OrderTime>
+        <OrderTime>2020-04-10T23:03:35.8826173+08:00</OrderTime>
         <Product>
           <ProductName>梨子</ProductName>
           <ProductPrice>1.2</ProductPrice>

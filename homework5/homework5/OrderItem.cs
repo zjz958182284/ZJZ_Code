@@ -8,11 +8,12 @@ namespace homework5
 {
    [Serializable]
     public class OrderItem
-    {
+    {     
         private string orderID;
         private Product product;
         private DateTime orderTime;
         private int buyNum;
+       
         public string OrderID {
             get =>orderID;
             set =>orderID=value;
@@ -21,7 +22,11 @@ namespace homework5
             get => buyNum;
             set => buyNum = value;
         }
-        public OrderItem() { }
+        public OrderItem() {
+            product = new Product();
+            orderTime = DateTime.Now;
+            
+        }
         public DateTime OrderTime { get => orderTime; set => orderTime = value; }
         public OrderItem ( string orderid ,Product product,int buyNum)
         {
@@ -63,6 +68,6 @@ namespace homework5
                 return ((OrderItem)item).product.ProductName == this.product.ProductName;
         }
 
-
     }
+    
 }
