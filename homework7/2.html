@@ -1,0 +1,700 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="canonical" href="https://blog.csdn.net/qq_37717853/category_8611611.html"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="report" content='{"pid":"blog"}'>
+    <meta name="referrer" content="always">
+    <meta http-equiv="Cache-Control" content="no-siteapp" /><link rel="alternate" media="handheld" href="#" />
+    <meta name="shenma-site-verification" content="5a59773ab8077d4a62bf469ab966a63b_1497598848">
+        <meta name="csdn-baidu-search"  content='{"autorun":true,"install":true,"keyword":"贝塞尔曲线_七塘_轮回之轫-CSDN博客"}'>
+    
+    <link href="https://csdnimg.cn/public/favicon.ico" rel="SHORTCUT ICON">
+    <title>贝塞尔曲线_七塘_轮回之轫-CSDN博客</title>
+    <meta name="description" content="Android贝塞尔曲线的简单应用之——实现仿美团点击商品掉落购物车效果，附demo和工具类,Android贝塞尔曲线的简单应用之——实现自定义圆形控件内水波纹自动上升效果Demo,移动开发,网络">
+    <script src='//g.csdnimg.cn/tingyun/1.8.3/blog.js' type='text/javascript'></script>
+                        <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/list-c735deee77.min.css">
+            <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/column_pc-1f58b3db69.min.css" />
+                    
+            <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/themes/skin3-template/skin3-template-c9d2f651cc.min.css">
+    
+<!--    自定义皮肤样式-->
+    
+    <script type="text/javascript">
+        var username = "qq_37717853";
+        var blog_address = "https://blog.csdn.net/qq_37717853";
+        var static_host = "https://csdnimg.cn/release/phoenix/";
+        var currentUserName = "";
+        var isOwner = false;
+        var loginUrl = "http://passport.csdn.net/account/login?from=https://blog.csdn.net/qq_37717853/article/category/8611611"
+        var blogUrl = "https://blog.csdn.net/";
+
+        var curSkin = "skin3-template";
+        // 收藏所需数据
+        var articleTitle = "七塘";
+        var articleDesc = "Android贝塞尔曲线的简单应用之——实现仿美团点击商品掉落购物车效果，附demo和工具类,Android贝塞尔曲线的简单应用之——实现自定义圆形控件内水波纹自动上升效果Demo,移动开发,网络";
+
+        var articleTitles = "贝塞尔曲线_七塘_轮回之轫-CSDN博客";
+        
+        var nickName = "轮回之轫";
+        var isCorporate = false;
+        var subDomainBlogUrl = "https://blog.csdn.net/"
+        var digg_base_url = "https://blog.csdn.net/qq_37717853";
+        var articleDetailUrl = "";
+        var isShowThird = "0"
+
+        var canRead = true;
+    </script>
+    <script src="https://csdnimg.cn/public/common/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <!--js引用-->
+            <script src="//g.csdnimg.cn/??fixed-sidebar/1.1.6/fixed-sidebar.js,report/1.4.4/report.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://csdnimg.cn/public/sandalstrap/1.4/css/sandalstrap.min.css">
+    <style>
+        .MathJax, .MathJax_Message, .MathJax_Preview{
+            display: none
+        }
+    </style>
+</head>
+<body class="nodata " > 
+    <link rel="stylesheet" href="https://csdnimg.cn/public/common/toolbar/content_toolbar_css/content_toolbar.css">
+    <script id="toolbar-tpl-scriptId" src="https://csdnimg.cn/public/common/toolbar/js/content_toolbar.js" type="text/javascript" domain="https://blog.csdn.net/"></script>
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+<link rel="stylesheet" href="https://g.csdnimg.cn/lib/cropper/3.1.6/cropper.css">
+<script src="https://g.csdnimg.cn/lib/cropper/3.1.6/cropper.js"></script>
+<script type="text/javascript" crossorigin src="https://g.csdnimg.cn/user-login/2.2.4/user-login.js"></script>
+<header>
+	<div class="container d-flex clearfix" style="background-image: ">
+		<div class="title-box">
+			<h1 class="title-blog">
+				<a href="https://blog.csdn.net/qq_37717853">七塘</a>
+			</h1>
+			<p class="description ">技术是一场人生苦旅</p>
+		</div>
+		<div class="opt-box d-flex justify-content-end">
+		    				            		</div>
+        	</div>
+	</header>
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/vendor/pagination/paging-e040f0c7c8.css">
+<div class="container clearfix pt0" id="mainBox">
+<aside class="blog_container_aside">
+	<!--主页引入-->
+
+    <div id="asideProfile" class="aside-box">
+    <!-- <h3 class="aside-title">个人资料</h3> -->
+    <div class="profile-intro d-flex">
+        <div class="avatar-box d-flex justify-content-center flex-column">
+            <a href="https://blog.csdn.net/qq_37717853"  data-report-click='{"mod":"popu_379","dest":"https://blog.csdn.net/qq_37717853"}'>
+                <img src="https://profile.csdnimg.cn/0/8/E/3_qq_37717853" class="avatar_pic" username='qq_37717853'>
+                            </a>
+                    </div>
+        <div class="user-info d-flex flex-column profile-intro-name-box">
+            <div>
+                                <span class="name csdn-tracking-statistics tracking-click "   data-report-click='{"mod":"popu_379","dest":"https://blog.csdn.net/qq_37717853"}' username='qq_37717853'>
+                    <a href="https://blog.csdn.net/qq_37717853" class="" id="uid" title='轮回之轫'>
+                    轮回之轫                    </a>
+                </span>
+            </div>
+            <div class="profile-intro-name-boxFooter">
+                                                <span class="personal-home-page" style='right:-96px;'><a target="_blank" href="https://me.csdn.net/qq_37717853">TA的个人主页 ></a></span>
+                            </div>
+        </div>
+    </div>
+    <div class="data-info d-flex item-tiling">
+                <dl class="text-center" title="12">
+                            <dt><a href="https://blog.csdn.net/qq_37717853" data-report-query="t=1">原创</a></dt>
+                <dd><a href="https://blog.csdn.net/qq_37717853" data-report-query="t=1"><span class="count">12</span></a></dd>
+                    </dl>
+        <dl class="text-center" id="fanBox" title="4">
+            <dt>粉丝</dt>
+            <dd><span class="count" id="fan">4</span></dd>
+        </dl>
+        <dl class="text-center" title="8">
+            <dt>获赞</dt>
+            <dd><span class="count">8</span></dd>
+        </dl>
+        <dl class="text-center" title="2">
+            <dt>评论</dt>
+            <dd><span class="count">2</span></dd>
+        </dl>
+        <dl class="text-center" title="10068">
+            <dt>访问</dt>
+            <dd><span class="count">1万+</span></dd>
+        </dl>
+    </div>
+    <div class="grade-box clearfix">
+        <dl class="aside-box-footerClassify">
+            <dt>等级:</dt>
+            <dd>
+                <a href="https://blog.csdn.net/home/help.html#level" title="2级,点击查看等级说明" target="_blank">
+                    <svg class="icon icon-level" aria-hidden="true">
+                        <use xlink:href="#csdnc-bloglevel-2"></use>
+                    </svg>
+                </a>
+            </dd>
+        </dl>
+        <dl title="272583">
+            <dt>周排名:</dt>
+            <dd>
+                <a class="grade-box-rankA" href="https://blog.csdn.net/rank/writing_rank" target="_blank">
+                    27万+                </a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>积分:</dt>
+            <dd title="227">
+                227            </dd>
+        </dl>
+        <dl title="279362">
+            <dt>总排名:</dt>
+            <dd>
+                <a class="grade-box-rankA" href="https://blog.csdn.net/rank/writing_rank_total" target="_blank">
+                    27万+                </a>
+            </dd>
+        </dl>
+    </div>
+    <div class="aside-box-footer">
+                    <div class="badge-box d-flex">
+                <div class="profile-medal">勋章:</div>
+                <div class="badge d-flex">
+                                                                                                        <div class="icon-badge" title="持之以恒">
+                                    <div class="mouse-box">
+                                        <img src="https://csdnimg.cn/medal/chizhiyiheng@120.png" alt="">
+                                        <div class="icon-arrow"></div>
+                                    </div>
+                                    <div class="grade-detail-box">
+                                        <div class="pos-box">
+                                            <div class="left-box d-flex justify-content-center align-items-center flex-column">
+                                                <img src="https://csdnimg.cn/medal/chizhiyiheng@120.png" alt="">
+                                                <p>持之以恒</p>
+                                            </div>
+                                            <div class="right-box">
+                                                授予每个自然月内发布4篇或4篇以上原创或翻译IT博文的用户。不积跬步无以至千里，不积小流无以成江海，程序人生的精彩需要坚持不懈地积累！                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                                                                        </div>
+                <script>
+                    (function($) {
+                        setTimeout(function() {
+                            $('div.icon-badge.show-moment').removeClass('show-moment');
+                        }, 5000);
+                    })(window.jQuery)
+                </script>
+            </div>
+                
+    </div>
+        <div class="profile-intro-name-boxOpration">
+        <div class="opt-letter-watch-box">
+                            <a class="personal-watch bt-button" id="btnAttent" data-report-click='{"mod":"popu_379"}'>关注</a>
+                    </div>
+        <div class='opt-letter-watch-box'>
+            <a class="bt-button btn-red-hollow personal-letter" href=https://im.csdn.net/im/main.html?userName=qq_37717853 target="_blank" rel="noopener">私信</a>
+        </div>
+    </div>
+    </div>
+<script>
+    function watchBtnChange(flag, username) {
+        $('span.blog-expert-button-follow').each(function(index) {
+            if (flag) {
+                if ($(this).attr("data-name") == username) {
+                    $(this).html('<span class="hover-hide">已关注</span><span class="hover-show">取消</span>').removeClass('btn-red-follow').addClass('btn-gray-follow attented');
+                }
+            } else {
+                if ($(this).attr("data-name") == username) {
+                    $(this).html("关注").addClass('btn-red-follow').removeClass('btn-gray-follow attented');
+                }
+            }
+        })
+        if (username == $('p.csdn-tracking-statistics').attr("username")) {
+            if (flag) {
+                $('#btnAttent').addClass("attented").text("已关注").removeClass('btn-red-hollow').addClass('btn-gray-hollow');
+                changeFans(1)
+            } else {
+                $('#btnAttent').text("关注").addClass('btn-red-hollow').removeClass('btn-gray-hollow attented');
+                changeFans(-1)
+            }
+        }
+
+    }
+
+    function changeFans(num) {
+        if ($('#fan').text().indexOf('+') < 0) {
+            $('#fan').text(parseInt($('#fan').text()) + num);
+        } else {
+            $('#fanBox').attr('title', parseInt($('#fanBox').attr('title')) + num);
+        }
+    }
+    window.csdn = window.csdn ? window.csdn : {};
+    window.csdn.watchBtnChange = watchBtnChange;
+</script><div class="csdn-tracking-statistics mb8 box-shadow" data-pid="blog" data-report-click='{"mod":"popu_4"}' data-report-view='{"mod":"popu_4"}' style="height:250px;">
+    <div class="aside-content text-center" id="cpro_u2734133">
+        <div id="kp_box_56" data-pid="56"><script type="text/javascript">
+    (function() {
+        var s = "_" + Math.random().toString(36).slice(2);
+        document.write('<div style="" id="' + s + '"></div>');
+        (window.slotbydup = window.slotbydup || []).push({
+            id: "u3032528",
+            container:  s
+        });
+    })();
+</script>
+<!-- 多条广告如下脚本只需引入一次 -->
+<script type="text/javascript" src="//cpro.baidustatic.com/cpro/ui/c.js" async="async" defer="defer" ></script><img class="pre-img-lasy" data-src="https://kunyu.csdn.net/1.png?p=56&a=76&c=0&k=&d=1&t=3&u=f70a8335372348e8b6186163ab4d0f1d"></div>    </div>
+</div>
+<div id="asideNewArticle" class="aside-box">
+    <h3 class="aside-title">最新文章</h3>
+    <div class="aside-content">
+        <ul class="inf_list clearfix">
+                        <li class="clearfix">
+                <a data-report-click='{"mod":"popu_382","dest":"https://blog.csdn.net/qq_37717853/article/details/87893523"}' href="https://blog.csdn.net/qq_37717853/article/details/87893523" target="_blank" >
+                                        Android可折叠式标题栏的实现：CoordinateLayout+AppBarLayout+CollapsingToolbarLayout+Toolbar                </a>
+            </li>
+                        <li class="clearfix">
+                <a data-report-click='{"mod":"popu_382","dest":"https://blog.csdn.net/qq_37717853/article/details/87879695"}' href="https://blog.csdn.net/qq_37717853/article/details/87879695" target="_blank" >
+                                        Android贝塞尔曲线的简单应用之——实现仿美团点击商品掉落购物车效果，附demo和工具类                </a>
+            </li>
+                        <li class="clearfix">
+                <a data-report-click='{"mod":"popu_382","dest":"https://blog.csdn.net/qq_37717853/article/details/87715126"}' href="https://blog.csdn.net/qq_37717853/article/details/87715126" target="_blank" >
+                                        随笔：说说第一次在android中嵌入非全屏显示的unity游戏时的坑之——界面切换时出现延迟/卡顿/花屏等现象解决方法                </a>
+            </li>
+                        <li class="clearfix">
+                <a data-report-click='{"mod":"popu_382","dest":"https://blog.csdn.net/qq_37717853/article/details/87376538"}' href="https://blog.csdn.net/qq_37717853/article/details/87376538" target="_blank" >
+                                        Android Studio3.0添加com.android.support:design:包的CoordinatorLayout后出现无法预览/闪退问题的解决方法                </a>
+            </li>
+                        <li class="clearfix">
+                <a data-report-click='{"mod":"popu_382","dest":"https://blog.csdn.net/qq_37717853/article/details/86646217"}' href="https://blog.csdn.net/qq_37717853/article/details/86646217" target="_blank" >
+                                        Android Studio出现Resolved versions for app (26.1.0) and test app (27.1.1).解决方法                </a>
+            </li>
+                    </ul>
+    </div>
+</div>
+    <div id="asideCategory" class="aside-box flexible-box"
+         style="display:block!important;">
+    <h3 class="aside-title">分类专栏</h3>
+    <div class="aside-content">
+        <ul>
+                            <li class="">
+                                        <a class="clearfix" 
+                                                    data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/qq_37717853/category_7221280.html"}'
+                            data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/qq_37717853/category_7221280.html"}'
+                                               href="https://blog.csdn.net/qq_37717853/category_7221280.html">
+                                                    <img src="https://img-blog.csdnimg.cn/20190918140053667.png" alt="">
+                                                <!--####是否付费-->
+                        <span class="title oneline"><span class="text">java基础</span>
+                                                    </span>
+                        <!--####是否付费-->
+                                                    <span class="count float-right">2篇</span>
+                                            </a>
+                </li>
+                            <li class="">
+                                        <a class="clearfix" 
+                                                    data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/qq_37717853/category_7275832.html"}'
+                            data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/qq_37717853/category_7275832.html"}'
+                                               href="https://blog.csdn.net/qq_37717853/category_7275832.html">
+                                                    <img src="https://img-blog.csdnimg.cn/20190927151043371.png" alt="">
+                                                <!--####是否付费-->
+                        <span class="title oneline"><span class="text">Android基础</span>
+                                                    </span>
+                        <!--####是否付费-->
+                                                    <span class="count float-right">2篇</span>
+                                            </a>
+                </li>
+                            <li class="">
+                                        <a class="clearfix" 
+                                                    data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/qq_37717853/category_8573286.html"}'
+                            data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/qq_37717853/category_8573286.html"}'
+                                               href="https://blog.csdn.net/qq_37717853/category_8573286.html">
+                                                    <img src="https://img-blog.csdnimg.cn/20190927151043371.png" alt="">
+                                                <!--####是否付费-->
+                        <span class="title oneline"><span class="text">随笔</span>
+                                                    </span>
+                        <!--####是否付费-->
+                                                    <span class="count float-right">3篇</span>
+                                            </a>
+                </li>
+                            <li class="">
+                                        <a class="clearfix" 
+                                                    data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/qq_37717853/category_8598749.html"}'
+                            data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/qq_37717853/category_8598749.html"}'
+                                               href="https://blog.csdn.net/qq_37717853/category_8598749.html">
+                                                    <img src="https://img-blog.csdnimg.cn/20190918135101160.png" alt="">
+                                                <!--####是否付费-->
+                        <span class="title oneline"><span class="text">Android Studio</span>
+                                                    </span>
+                        <!--####是否付费-->
+                                                    <span class="count float-right">3篇</span>
+                                            </a>
+                </li>
+                            <li class="">
+                                        <a class="clearfix" 
+                                                    data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/qq_37717853/category_8611611.html"}'
+                            data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/qq_37717853/category_8611611.html"}'
+                                               href="https://blog.csdn.net/qq_37717853/category_8611611.html">
+                                                    <img src="https://img-blog.csdnimg.cn/20190927151117521.png" alt="">
+                                                <!--####是否付费-->
+                        <span class="title oneline"><span class="text">贝塞尔曲线</span>
+                                                    </span>
+                        <!--####是否付费-->
+                                                    <span class="count float-right">2篇</span>
+                                            </a>
+                </li>
+                            <li class="">
+                                        <a class="clearfix" 
+                                                    data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/qq_37717853/category_8640547.html"}'
+                            data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/qq_37717853/category_8640547.html"}'
+                                               href="https://blog.csdn.net/qq_37717853/category_8640547.html">
+                                                    <img src="https://img-blog.csdnimg.cn/20190918140129601.png" alt="">
+                                                <!--####是否付费-->
+                        <span class="title oneline"><span class="text">View</span>
+                                                    </span>
+                        <!--####是否付费-->
+                                                    <span class="count float-right">2篇</span>
+                                            </a>
+                </li>
+                            <li class="">
+                                        <a class="clearfix" 
+                                                    data-report-click='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/qq_37717853/category_8681564.html"}'
+                            data-report-view='{"mod":"popu_537","strategy":"","dest":"https://blog.csdn.net/qq_37717853/category_8681564.html"}'
+                                               href="https://blog.csdn.net/qq_37717853/category_8681564.html">
+                                                    <img src="https://img-blog.csdnimg.cn/20190918140213434.png" alt="">
+                                                <!--####是否付费-->
+                        <span class="title oneline"><span class="text">unity</span>
+                                                    </span>
+                        <!--####是否付费-->
+                                                    <span class="count float-right">1篇</span>
+                                            </a>
+                </li>
+                    </ul>
+    </div>
+        <p class="text-center">
+        <a class="btn btn-link-blue flexible-btn" data-fbox="aside-archive">展开</a>
+    </p>
+    </div>
+<div id="asideArchive" class="aside-box">
+    <h3 class="aside-title">归档</h3>
+    <div class="aside-content">
+        <ul class="archive-list">
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/qq_37717853/article/month/2019/02" data-report-click='{"mod":"popu_538","dest":"https://blog.csdn.net/qq_37717853/article/month/2019/02"}'>
+                    2019年2月                    <span class="count float-right">4篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/qq_37717853/article/month/2019/01" data-report-click='{"mod":"popu_538","dest":"https://blog.csdn.net/qq_37717853/article/month/2019/01"}'>
+                    2019年1月                    <span class="count float-right">4篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/qq_37717853/article/month/2018/12" data-report-click='{"mod":"popu_538","dest":"https://blog.csdn.net/qq_37717853/article/month/2018/12"}'>
+                    2018年12月                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/qq_37717853/article/month/2017/11" data-report-click='{"mod":"popu_538","dest":"https://blog.csdn.net/qq_37717853/article/month/2017/11"}'>
+                    2017年11月                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/qq_37717853/article/month/2017/10" data-report-click='{"mod":"popu_538","dest":"https://blog.csdn.net/qq_37717853/article/month/2017/10"}'>
+                    2017年10月                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                    </ul>
+    </div>
+    </div>
+<div id="asideHotArticle" class="aside-box">
+	<h3 class="aside-title">热门文章</h3>
+	<div class="aside-content">
+		<ul class="hotArticle-list">
+							<li>
+
+                    <a
+                    data-report-click='{"mod":"popu_541","dest":"https://blog.csdn.net/qq_37717853/article/details/78218606"}' 
+                     href="https://blog.csdn.net/qq_37717853/article/details/78218606" >
+                                                随笔：Java中main函数的参数args的使用                    </a>
+					<p class="read">阅读数 <span>4274</span></p>
+				</li>
+							<li>
+
+                    <a
+                    data-report-click='{"mod":"popu_541","dest":"https://blog.csdn.net/qq_37717853/article/details/87376538"}' 
+                     href="https://blog.csdn.net/qq_37717853/article/details/87376538" >
+                                                Android Studio3.0添加com.android.support:design:包的CoordinatorLayout后出现无法预览/闪退问题的解决方法                    </a>
+					<p class="read">阅读数 <span>1225</span></p>
+				</li>
+							<li>
+
+                    <a
+                    data-report-click='{"mod":"popu_541","dest":"https://blog.csdn.net/qq_37717853/article/details/86483838"}' 
+                     href="https://blog.csdn.net/qq_37717853/article/details/86483838" >
+                                                Android贝塞尔曲线的简单应用之——实现自定义圆形控件内水波纹自动上升效果Demo                    </a>
+					<p class="read">阅读数 <span>1069</span></p>
+				</li>
+							<li>
+
+                    <a
+                    data-report-click='{"mod":"popu_541","dest":"https://blog.csdn.net/qq_37717853/article/details/87893523"}' 
+                     href="https://blog.csdn.net/qq_37717853/article/details/87893523" >
+                                                Android可折叠式标题栏的实现：CoordinateLayout+AppBarLayout+CollapsingToolbarLayout+Toolbar                    </a>
+					<p class="read">阅读数 <span>842</span></p>
+				</li>
+							<li>
+
+                    <a
+                    data-report-click='{"mod":"popu_541","dest":"https://blog.csdn.net/qq_37717853/article/details/86641516"}' 
+                     href="https://blog.csdn.net/qq_37717853/article/details/86641516" >
+                                                Android自定义View实现屏幕手写签名、银行、保险行业等电子签名                    </a>
+					<p class="read">阅读数 <span>661</span></p>
+				</li>
+					</ul>
+	</div>
+</div>
+<div id="asideNewComments" class="aside-box">
+    <h3 class="aside-title">最新评论</h3>
+    <div class="aside-content">
+        <ul class="newcomment-list">
+                        <li>
+                <a class="title text-truncate" data-report-click='{"mod":"popu_542","dest":"https://blog.csdn.net/qq_37717853/article/details/87376538#comments"}'  target="_blank" href="https://blog.csdn.net/qq_37717853/article/details/87376538#comments">Android Studio3.0...</a>
+                <p class="comment ellipsis">
+                    <a href="https://my.csdn.net/qq_37717853" class="user-name" target="_blank">qq_37717853：</a>[reply]u010569419[/reply]
+(｡◕ˇ∀ˇ◕)感谢！                </p>
+            </li>
+                        <li>
+                <a class="title text-truncate" data-report-click='{"mod":"popu_542","dest":"https://blog.csdn.net/qq_37717853/article/details/87376538#comments"}'  target="_blank" href="https://blog.csdn.net/qq_37717853/article/details/87376538#comments">Android Studio3.0...</a>
+                <p class="comment ellipsis">
+                    <a href="https://my.csdn.net/u010569419" class="user-name" target="_blank">u010569419：</a>挺不错哦，收藏一下！                </p>
+            </li>
+                    </ul>
+    </div>
+</div>
+	<div id="asideFooter">
+                    <div class="aside-box">
+                <div id="kp_box_57" data-pid="57"><script type="text/javascript">
+    (function() {
+        var s = "_" + Math.random().toString(36).slice(2);
+        document.write('<div style="" id="' + s + '"></div>');
+        (window.slotbydup = window.slotbydup || []).push({
+            id: "u3163270",
+            container:  s
+        });
+    })();
+</script>
+<!-- 多条广告如下脚本只需引入一次 -->
+<script type="text/javascript" src="//cpro.baidustatic.com/cpro/ui/c.js" async="async" defer="defer" ></script><img class="pre-img-lasy" data-src="https://kunyu.csdn.net/1.png?p=57&a=77&c=0&k=&d=1&t=3&u=65e0a883387a42948bdbbd4671f6cf83"></div>            </div>
+        		<div class="aside-box">
+			<div class="persion_article">
+			</div>
+		</div>
+	</div>
+</aside>
+<script src="https://csdnimg.cn/pubfooter/js/publib_footer-1.0.3.js" data-isfootertrack="false" type="text/javascript"></script>
+<script>
+	$("a.flexible-btn").click(function(){
+		$(this).parents('div.aside-box').removeClass('flexible-box');
+		$(this).parents("p.text-center").remove();
+	})
+</script>
+<script src="https://g.csdnimg.cn/user-tooltip/1.9/user-tooltip.js"  type="text/javascript"></script>
+<main>
+    <div id="column">
+        <div class="column_info_box">
+        <div class="column_info_box_all">
+                                    <div class="left_img"><img src="https://img-blog.csdnimg.cn/20190927151053287.png" alt=""></div>
+                                <div class="middle_con">
+            <div class="column_info clearfix">
+                <div class="column_info_text">
+                    <div class="column_top_template">
+                        <h3 class="column_title oneline">贝塞尔曲线</h3>
+                                                                                    <div class="column_button follow_column_button">
+                                    关注
+                                </div>
+                                                                                                </div>
+                    <div class="column_text">
+                                            </div>
+                </div>
+            </div>
+            <div class="column_operating">
+          <span class="column_data">
+                                <span>关注数：<span class="mumber-color">0</span></span>
+                          <span>文章数：<span class="mumber-color">2</span></span>
+            <span>访问量：<span class="mumber-color">1384</span></span>
+          </span>
+            </div>
+
+                        </div>
+                        
+</div>
+        </div>
+        <!--专栏个人简介-->
+        <div class="column_person_box">
+            <h3 class="column_person_tit">作者介绍
+                        </h3>
+                            <div class="column_person_con have__introduce">
+                    if else                </div>
+                    </div>
+        <!--专栏个人简介-->
+        <ul class="column_article_list">
+                                                <li>
+                        <a href="https://blog.csdn.net/qq_37717853/article/details/86483838" target="_blank" rel="noopener">
+                            <div class="column_article_title">
+                                <span class="article-type type-1 float-left">原创</span>                                <h2 class="title">Android贝塞尔曲线的简单应用之——实现自定义圆形控件内水波纹自动上升效果Demo                                    <!--####试读-->
+                                                                        <!--####试读--></h2>
+
+                            </div>
+                            <div class="column_article_desc">
+                                先上效果：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190114201259325.gif)
+很早之前就听过说贝塞尔曲线，只是一直没时间好好学习一番，最近忙里偷闲，便想着了解一下，网上关于贝塞尔曲线的解释很多，这里我就暂时不班门弄斧了，如果还不甚了解又有兴趣了解的小伙伴，可以去看看这个作者的博客，其中关于贝塞尔曲线的几篇写的还挺通俗易懂的。
+部分关键代...
+                            </div>
+                            <div class="column_article_data">
+                                                                <span>2019-01-14 20:55:30</span>
+                                <span>阅读数 1069</span>
+                                <span>评论数 0</span>
+                            </div>
+                        </a>
+                                            </li>
+                                    <li>
+                        <a href="https://blog.csdn.net/qq_37717853/article/details/87879695" target="_blank" rel="noopener">
+                            <div class="column_article_title">
+                                <span class="article-type type-1 float-left">原创</span>                                <h2 class="title">Android贝塞尔曲线的简单应用之——实现仿美团点击商品掉落购物车效果，附demo和工具类                                    <!--####试读-->
+                                                                        <!--####试读--></h2>
+
+                            </div>
+                            <div class="column_article_desc">
+                                上一篇：Android贝塞尔曲线的简单应用之——实现自定义圆形控件内水波纹自动上升效果Demo
+效果：
+
+布局这里很简单，一个RecyclerView和一个ImageView,这里稍微注意下，ConstraintLayout等下我们要用到，所以这里加了id。
+
+然后是在activity中设置recyclerview的adapter添加一些商品数据，在item的点击监听中调用封装好的工具类：Bezi...
+                            </div>
+                            <div class="column_article_data">
+                                                                <span>2019-02-22 15:39:26</span>
+                                <span>阅读数 315</span>
+                                <span>评论数 0</span>
+                            </div>
+                        </a>
+                                            </li>
+                                    </ul>
+            </div>
+</main>
+</div>
+<div class="skin-boxshadow"></div>
+<script src="https://csdnimg.cn/release/phoenix/vendor/pagination/paging-3d3b805766.js"></script>
+<script type="text/javascript"  src="https://g.csdnimg.cn/??login-box/1.1.1/30/login-box.js,login-box/1.1.1/30/login-auto.js"></script>
+<script type="text/javascript">
+    var currentPage = 1;
+    var baseUrl = 'https://blog.csdn.net/qq_37717853/category_8611611';
+    var pageSize = 40 ;
+    var listTotal = 2 ;
+
+    function getAllUrl(page) {
+        if (page > 1) {
+            return baseUrl + "_" + page + ".html";
+        }
+        return baseUrl + ".html";
+    }
+
+    var alPag = new Paging();
+    alPag.init({
+        target: '#pageBox',
+        pagesize: pageSize,
+        count: listTotal,
+        current: currentPage,
+        firstTpl: '',
+        lastTpl: '',
+        callback: function (page, size, count) {
+            var url = getAllUrl(page);
+            location.href = url;
+        }
+    })
+</script>
+<script>window._bd_share_config = {
+        "common": {
+            "bdSnsKey": {},
+            "bdText": "",
+            "bdMini": "1",
+            "bdMiniList": false,
+            "bdPic": "",
+            "bdStyle": "0",
+            "bdSize": "16"
+        }, "share": {}
+    };
+    with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'https://csdnimg.cn/static/api/js/share.js?v=89860594'];</script>
+</body>
+<script type="text/javascript">
+    $(function () {
+        $(document).on('click', '.follow_column_button', function () {
+            if (!currentUserName) {
+                window.csdn.loginBox.show();
+                return false;
+            }
+
+            var url = "https://blog.csdn.net/" + "/Subscribe/subscribe";
+            var id = "8611611";
+            var info = {id: id};
+            $.post(url, info, function(data){
+                if(data.result === 1){
+                    $('.column_button').removeClass('follow_column_button').addClass('unfollow_column_button').text('已关注')
+                }
+            })
+        });
+        $(document).on('click', '.unfollow_column_button', function () {
+            var url = "https://blog.csdn.net/" + "/Subscribe/unSubscribe";
+            var id = "8611611";
+            var info = {id: id};
+            $.post(url, info, function (data) {
+                if (data.result === 1) {
+                    $('.column_button').removeClass('unfollow_column_button').addClass('follow_column_button').text('关注')
+                }
+            })
+        })
+
+        $(document).on('mouseenter mouseleave', '.unfollow_column_button', function (e) {
+            if (e.type === 'mouseenter') {
+                $(this).text('取消关注')
+            } else if (e.type === 'mouseleave') {
+                $(this).text('已关注')
+            }
+        })
+    })
+</script>
+<script type="text/javascript">
+    if (localStorage.getItem("isReload") != null) {
+        window.location.reload();
+        localStorage.removeItem("isReload")
+	  }
+     $(document).on('click','#edit',function(){
+        localStorage.setItem("isReload","true");
+     })
+</script>
+<script src="https://csdnimg.cn/release/phoenix/vendor/iconfont/csdnc-c439e66521.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/template/js/common-1678ae4db8.min.js"></script>
+<script src="//csdnimg.cn/release/download/old_static/js/qrcode.js"></script>
+<script src="https://csdnimg.cn/release/cart/pub/1.0.1/cart_jsonp.js?v=2"></script>
+<script src="https://csdnimg.cn/release/phoenix/template/js/column_pay-48fea1027a.min.js"></script>
