@@ -11,9 +11,9 @@ namespace homework5
       public class Order:IComparable<Order>
     {
 
-        private Receiver receiver;
-        private double sumPrice;
-        private List<OrderItem> orderItems = new List<OrderItem>();
+        public Receiver receiver;
+        public double sumPrice;
+        public List<OrderItem> orderItems = new List<OrderItem>();
         public double OrderSumPrice { get => sumPrice; set => sumPrice = value; }
         public OrderItem this[int index]
         {

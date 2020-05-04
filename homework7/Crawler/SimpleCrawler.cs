@@ -13,30 +13,23 @@ namespace Crawler
 {
     class SimpleCrawler
     {
-        private Hashtable urls = new Hashtable();
-        private int count = 0;
-        private List<string> s = new List<string>();
-        public List<string> URLs { get => s; set => s = value; }
+        private Hashtable urls;
+        private int count = 0;     
         public string startUrl;
-        public Func<string, string> DownloadDelegate;
+        public Action<string> updateListBox;
         public SimpleCrawler()
         {
-            DownloadDelegate = DownLoad;
+            urls = new Hashtable();
+          
         }
+
         public void Start()
         {
-            SimpleCrawler myCrawler = new SimpleCrawler();
-            myCrawler.urls.Add(startUrl, false);//加入初始页面           
-            string html = myCrawler.DownloadDelegate(startUrl); // 下载
-            myCrawler.urls[startUrl] = true;
-            myCrawler.count++;
-            myCrawler.Parse(html);//解析,并加入新的链接     
-            myCrawler.StartCrawl();
-        }
-
-        private void StartCrawl()
-        {
-
+            this.urls.Add(startUrl, false);//加入初始页面           
+            string html = this.DownLoad(startUrl); // 下载
+            this.urls[startUrl] = true;
+            this.count++;
+            this.Parse(html,startUrl);//解析,并加入新的链接     
             Regex regex = new Regex(@"(.html)$");
             while (true)
             {
@@ -52,17 +45,17 @@ namespace Crawler
                 }
 
                 if (currentUrl == null || count > 10)break;
-                s.Add("正在下载" + currentUrl);
-                string html = DownloadDelegate(currentUrl); // 下载
+                updateListBox("正在下载" + currentUrl);
+                 html = DownLoad(currentUrl); // 下载
                 urls[currentUrl] = true;
                 count++;
-                Parse(html);//解析,并加入新的链接
+                Parse(html, startUrl);//解析,并加入新的链接
             }
         }
 
         public string DownLoad(string url)//exception
         {
-
+           
             WebClient webClient = new WebClient();
             webClient.Encoding = Encoding.UTF8;
             try
@@ -70,26 +63,31 @@ namespace Crawler
                 string html = webClient.DownloadString(url);
                 string fileName = "D:\\VS_workplace\\homework7\\" + count.ToString() + ".html";
                 File.WriteAllText(fileName, html, Encoding.UTF8);
+
                 return html;
             }
             catch (Exception e)
             {
-                s.Add(e.Message);
+                updateListBox(e.Message);
                 return "";
                    
             }
 
         }
 
-        private void Parse(string html)
+        private void Parse(string html,string url)
         {
+            Regex regex = new Regex(@"/{1,2}.+");//转换成绝对地址
             string strRef = @"(href|HREF)[]*=[]*[""'][^""'#>]+[""']";
             MatchCollection matches = new Regex(strRef).Matches(html);
             foreach (Match match in matches)
             {
                 strRef = match.Value.Substring(match.Value.IndexOf('=') + 1)
                           .Trim('"', '\"', '#', '>');
+
                 if (strRef.Length == 0) continue;
+                if (regex.IsMatch(strRef))
+                    strRef = url + strRef;
                 if (urls[strRef] == null) urls[strRef] = false;
             }
         }

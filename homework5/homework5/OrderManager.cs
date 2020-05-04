@@ -40,7 +40,7 @@ namespace homework5
             order3.AddOrderItem(new OrderItem("zlc", new Product("香蕉", 2.3), 8));
             order3.AddOrderItem(new OrderItem("zfc", new Product("梨子", 1.2), 6));
             orderService.AddOrder(order3);
-            this.bindingSource1.DataSource = orderService;       
+            this.bindingSource1.DataSource = orderService.Orders;       
 
         }
 
@@ -53,7 +53,10 @@ namespace homework5
             else
             {
             Form1 form = new Form1();
-            form.bindingSource1.DataSource= dataGridView2.CurrentRow.DataBoundItem;
+                Order order = (bindingSource1.Current as Order);
+                form.bindingSource1.DataSource= order;
+
+                
             form.Show();
                 
             }

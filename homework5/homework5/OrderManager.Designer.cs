@@ -70,9 +70,8 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.receiverDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderSumPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.receiverDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
@@ -81,7 +80,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -339,8 +337,8 @@
             this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.receiverDataGridViewTextBoxColumn,
-            this.orderSumPriceDataGridViewTextBoxColumn});
+            this.orderSumPriceDataGridViewTextBoxColumn,
+            this.receiverDataGridViewTextBoxColumn});
             this.dataGridView2.DataSource = this.bindingSource1;
             this.dataGridView2.Location = new System.Drawing.Point(3, 0);
             this.dataGridView2.Name = "dataGridView2";
@@ -430,14 +428,7 @@
             // 
             // bindingSource1
             // 
-            this.bindingSource1.DataMember = "Orders";
-            this.bindingSource1.DataSource = typeof(homework5.OrderService);
-            // 
-            // receiverDataGridViewTextBoxColumn
-            // 
-            this.receiverDataGridViewTextBoxColumn.DataPropertyName = "Receiver";
-            this.receiverDataGridViewTextBoxColumn.HeaderText = "Receiver";
-            this.receiverDataGridViewTextBoxColumn.Name = "receiverDataGridViewTextBoxColumn";
+            this.bindingSource1.DataSource = typeof(homework5.Order);
             // 
             // orderSumPriceDataGridViewTextBoxColumn
             // 
@@ -449,9 +440,11 @@
             this.orderSumPriceDataGridViewTextBoxColumn.Name = "orderSumPriceDataGridViewTextBoxColumn";
             this.orderSumPriceDataGridViewTextBoxColumn.Width = 140;
             // 
-            // orderBindingSource
+            // receiverDataGridViewTextBoxColumn
             // 
-            this.orderBindingSource.DataSource = typeof(homework5.Order);
+            this.receiverDataGridViewTextBoxColumn.DataPropertyName = "Receiver";
+            this.receiverDataGridViewTextBoxColumn.HeaderText = "Receiver";
+            this.receiverDataGridViewTextBoxColumn.Name = "receiverDataGridViewTextBoxColumn";
             // 
             // OrderManager
             // 
@@ -478,7 +471,6 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -511,12 +503,9 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.BindingSource orderBindingSource;
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.ToolStripMenuItem showAllOrderToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn receiverDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn orderSumPriceDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button2;
@@ -526,5 +515,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orderSumPriceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn receiverDataGridViewTextBoxColumn;
     }
 }

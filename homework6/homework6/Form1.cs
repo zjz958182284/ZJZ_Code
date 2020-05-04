@@ -124,5 +124,10 @@ namespace homework6
             if (graphics == null) graphics = this.panel3.CreateGraphics();
             drawCayleyTree(depth, 155, 300, length, -Math.PI / 2);
         }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

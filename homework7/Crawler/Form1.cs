@@ -18,21 +18,24 @@ namespace Crawler
         {
             
             InitializeComponent();
-            this.bindingSource1.DataSource = crawler;
-            crawler.DownloadDelegate += UpdateInfo;
-            
+            crawler.updateListBox += update1;
+  
         }
-        private string UpdateInfo(string s)
+        private void update1(string s)
         {
-           
-            this.bindingSource1.DataSource = crawler;
-            return null;
+            this.listBox1.Items.Add(s);
         }
         private void button1_Click(object sender, EventArgs e)
         {
-           crawler.startUrl = this.textBox1.Text;
+            this.listBox1.Items.Clear();
+            crawler.startUrl = this.textBox1.Text;
             Thread thread = new Thread(crawler.Start);
             thread.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            //this.bindingSource1.ResetBindings(false);
         }
     }
 }
